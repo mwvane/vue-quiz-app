@@ -1,21 +1,26 @@
 <template>
     <div class="answer">
       <button class="btn" @click="onClick">{{answer.answer}}</button>
-      <h1>{{answer.id}}</h1>
     </div>
 </template>
 
 <script>
+import {eventEmitter} from "@/main";
+
 export default {
   // eslint-disable-next-line vue/multi-word-component-names
   name: "Answer",
+  components:{
+  },
   props:{
     answer:Object,
+    score:Number
   },
   methods:{
     onClick(){
-      console.log(this.id)
-      this.$emit('onClick',this.id)
+      if(this.answer.isCorrect){
+        eventEmitter.emit('increase-score')
+      }
     }
   }
 }

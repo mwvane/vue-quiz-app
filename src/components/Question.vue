@@ -1,7 +1,7 @@
 <template>
     <div class="question">
         <h1>{{question}}</h1>
-        <Answer v-for="item in answers" :key="item.id" :answer="item"></Answer>
+        <Answer @onClick="onClick" v-for="item in answers" :key="item.id" :answer="item"></Answer>
     </div>
 </template>
 
@@ -16,6 +16,11 @@ export default {
   },
   components:{
     Answer
+  },
+  methods:{
+    onClick(id){
+      console.log(id)
+    }
   }
 }
 </script>

@@ -32,6 +32,22 @@ export default {
             },
           ]
         },
+        {
+          id: 1,
+          question: "Are you ready to learn Vue JS?",
+          answers: [
+            {
+              id: 10,
+              answer: 'Yes',
+              isCorrect: true
+            },
+            {
+              id: 20,
+              answer: 'No',
+              isCorrect: false
+            },
+          ]
+        },
       ]
     }
   }
