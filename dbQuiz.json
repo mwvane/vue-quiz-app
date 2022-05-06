@@ -1,0 +1,55 @@
+[
+  {
+    "id": 1,
+    "question": "Are you ready to learn Vue JS?",
+    "answers": [
+      {
+        "id": 1,
+        "answer": "Yes",
+        "isCorrect": true
+      },
+      {
+        "id": 2,
+        "answer": "No",
+        "isCorrect": false
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "question": "Are you ready to learn Vue JS today?",
+    "answers": [
+      {
+        "id": 13,
+        "answer": "Sure",
+        "isCorrect": false
+      },
+      {
+        "id": 22,
+        "answer": "No",
+        "isCorrect": true
+      },
+    ]
+  },
+  {
+    "id": 3,
+    "question": "How many is 1+1?",
+    "answers": [
+      {
+        "id": 51,
+        "answer": "4",
+        "isCorrect": false
+      },
+      {
+        "id": 62,
+        "answer": "3",
+        "isCorrect": false
+      },
+      {
+        "id": 223,
+        "answer": "2",
+        "isCorrect": true
+      }
+    ]
+  }
+]

@@ -1,55 +1,44 @@
 <template>
   <div>
-    <Quiz :quiz="quiz">
+    <Header
+        :title="title"
+        :quiz-length="this.quiz.length"
+        :passed-quiz="this.AlreadyPassedQuiz"
+    ></Header>
+    <Quiz :quiz="quiz" @passed-quiz="passedQuiz">
     </Quiz>
   </div>
 </template>
 
 <script>
 import Quiz from "@/components/Quiz";
+import Header from "@/components/Header";
 
 export default {
   name: 'App',
   components: {
-    Quiz
+    Quiz,
+    Header
   },
   data() {
     return {
-      quiz: [
-        {
-          id: 1,
-          question: "Are you ready to learn Vue JS?",
-          answers: [
-            {
-              id: 10,
-              answer: 'Yes',
-              isCorrect: true
-            },
-            {
-              id: 20,
-              answer: 'No',
-              isCorrect: false
-            },
-          ]
-        },
-        {
-          id: 1,
-          question: "Are you ready to learn Vue JS?",
-          answers: [
-            {
-              id: 10,
-              answer: 'Yes',
-              isCorrect: true
-            },
-            {
-              id: 20,
-              answer: 'No',
-              isCorrect: false
-            },
-          ]
-        },
-      ]
+      title: "Quiz app",
+      AlreadyPassedQuiz: 0,
     }
+  },
+  created() {
+    fetch('./dbQuiz.json')
+        .then(response => response.json())
+        .then(obj => console.log(obj))
+  },
+  props: {
+    quiz: Array
+  },
+  methods: {
+    passedQuiz() {
+      this.AlreadyPassedQuiz++
+    }
+
   }
 }
 </script>
@@ -60,7 +49,11 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  color: white;
+  margin-top: 15px;
+}
+
+body {
+  background: #292727;
 }
 </style>

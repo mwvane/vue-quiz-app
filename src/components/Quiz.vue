@@ -1,36 +1,38 @@
 <template>
   <div class="quiz">
-    <ScoreCounter :score="score"></ScoreCounter>
-    <Question v-for="item in quiz"
-              :key="item.id "
-              :question="item.question"
-              :answers="item.answers">
+    <Question @onAnswered="nextQuiz"
+              :question="currentQuiz.question"
+              :answers="currentQuiz.answers">
     </Question>
   </div>
 </template>
 
 <script>
 import Question from "@/components/Question";
-import ScoreCounter from "@/components/ScoreCounter";
-import {eventEmitter} from "@/main";
+
 export default {
   // eslint-disable-next-line vue/multi-word-component-names
   name: "Quiz",
-  components:{
+  components: {
     Question,
-    ScoreCounter
   },
-  props:['quiz'],
-  data(){
-    return{
-      score:0
+  props: ['quiz'],
+  data() {
+    return {
+      score: 0,
+      currentQuiz: this.quiz[0],
+      currentQuizIndex: 0
     }
   },
-  mounted() {
-    eventEmitter.on('increase-score', () => {
-      this.score++;
-    })
+  methods: {
+    nextQuiz() {
+      if (this.currentQuizIndex < this.quiz.length - 1) {
+        this.currentQuiz = this.quiz[++this.currentQuizIndex]
+        this.$emit("passed-quiz",this.currentQuizIndex)
+      }
+    }
   }
+
 }
 </script>
 
